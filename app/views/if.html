@@ -41,6 +41,31 @@
   </div>
 </div>
 
+<div class="panel panel-default" ng-show="history.length">
+  <div class="panel-heading">History</div>
+  <table class="table table-condensed centered">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Result</th>
+        <th>Your guess</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="task in history.slice().reverse()">
+        <td><code>if ({{task.a.label}}) { ... }</code></td>
+        <td ng-show="task.result"><span class="label label-success">is true</span></td>
+        <td ng-show="!task.result"><span class="label label-danger">is false</span></td>
+        <td ng-show="task.answer"><span class="label label-success">true</span></td>
+        <td ng-show="!task.answer"><span class="label label-danger">false</span></td>
+        <td ng-show="task.result === task.answer"><span class="glyphicon glyphicon-thumbs-up"></td>
+        <td ng-show="task.result !== task.answer"><span class="glyphicon glyphicon-thumbs-down"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <!--
 <div class="row marketing">
   <h4>HTML5 Boilerplate</h4>

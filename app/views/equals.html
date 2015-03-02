@@ -15,8 +15,14 @@
     <pre>{{last.a.label}} == {{last.b.label}}</pre>
     <p ng-show="last.result"><span class="label label-success">is true</span></p>
     <p ng-show="!last.result"><span class="label label-danger">is false</span></p>
-    <p ng-show="last.result === last.answer">You were right! <span class="glyphicon glyphicon-thumbs-up"></p>
-    <p ng-show="last.result !== last.answer">You were wrong! <span class="glyphicon glyphicon-thumbs-down"></p>
+    <p ng-show="last.result === last.answer"><span class="glyphicon glyphicon-thumbs-up"></p>
+    <p ng-show="last.result !== last.answer"><span class="glyphicon glyphicon-thumbs-down"></p>
+    <div class="well well-sm no-margin-bottom" ng-show="last.result !== (last.a.value === last.b.value)">
+      Hint: <code>{{last.a.label}} === {{last.b.label}}</code> would be 
+      <span class="label label-success" ng-show="last.a.value === last.b.value">true</span>
+      <span class="label label-danger" ng-show="last.a.value !== last.b.value">false</span>
+      ! Remember to use strict equality.
+    </div>
   </div>
 </div>
 
@@ -33,12 +39,37 @@
       <tr><th>Right</th><th>%</th><th>Wrong</th><th>%</th><th>Total</th></tr>
     </thead>
     <tbody>
-    <tr><td>{{stats.right}}</td><td>{{stats.rightPercent() | number:0}}%</td><td>{{stats.wrong}}</td><td>{{stats.wrongPercent() | number:0}}%</td><td>{{stats.total()}}</td></tr>
+      <tr><td>{{stats.right}}</td><td>{{stats.rightPercent() | number:0}}%</td><td>{{stats.wrong}}</td><td>{{stats.wrongPercent() | number:0}}%</td><td>{{stats.total()}}</td></tr>
     </tbody>
   </table>
   <div class="panel-body centered">
     <p>{{remaining()}} tasks remaining.</p>
   </div>
+</div>
+
+<div class="panel panel-default" ng-show="history.length">
+  <div class="panel-heading">History</div>
+  <table class="table table-condensed centered">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Result</th>
+        <th>Your guess</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="task in history.slice().reverse()">
+        <td><code>{{task.a.label}} == {{task.b.label}}</code></td>
+        <td ng-show="task.result"><span class="label label-success">is true</span></td>
+        <td ng-show="!task.result"><span class="label label-danger">is false</span></td>
+        <td ng-show="task.answer"><span class="label label-success">true</span></td>
+        <td ng-show="!task.answer"><span class="label label-danger">false</span></td>
+        <td ng-show="task.result === task.answer"><span class="glyphicon glyphicon-thumbs-up"></td>
+        <td ng-show="task.result !== task.answer"><span class="glyphicon glyphicon-thumbs-down"></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <!--

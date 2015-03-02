@@ -36,6 +36,7 @@ angular.module('javaScriptEqualityApp')
 
     var todo = [];
     var lastTask;
+    $scope.history = [];
 
   	$scope.stats = {
   		'right': 0,
@@ -74,6 +75,8 @@ angular.module('javaScriptEqualityApp')
   		$scope.last.b = $scope.b;
   		$scope.last.result = result;
   		$scope.last.answer = answer;
+
+      $scope.history.push($scope.last);
 
       // update stats
   		if (result === answer) {

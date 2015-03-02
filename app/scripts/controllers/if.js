@@ -34,6 +34,8 @@ angular.module('javaScriptEqualityApp')
   		{ 'label': 'NaN', 'value': NaN },
   	];
 
+    $scope.history = [];
+
   	$scope.stats = {
   		'right': 0,
   		'wrong': 0,
@@ -73,6 +75,8 @@ angular.module('javaScriptEqualityApp')
   		$scope.last.result = result;
   		$scope.last.answer = answer;
 
+      $scope.history.push($scope.last);
+      
       // update stats
   		if (result === answer) {
   			$scope.stats.right++;
