@@ -1,0 +1,16 @@
+<div class="jumbotron" ng-show="remaining()"> <h1>Is this equal?</h1> <p class="lead"> <pre class="question">{{a.label}} == {{b.label}}</pre> </p> <p> <a class="btn btn-lg btn-success" ng-click="result(true)">true <span class="glyphicon glyphicon-ok"></span></a> <a class="btn btn-lg btn-danger" ng-click="result(false)">false <span class="glyphicon glyphicon-remove"></span></a> </p> </div> <div class="panel {{last.result === last.answer ? 'panel-success' : 'panel-danger'}}" ng-show="last"> <div class="panel-heading">Last result</div> <div class="panel-body answer centered"> <pre>{{last.a.label}} == {{last.b.label}}</pre> <p ng-show="last.result"><span class="label label-success">is true</span></p> <p ng-show="!last.result"><span class="label label-danger">is false</span></p> <p ng-show="last.result === last.answer">You were right! <span class="glyphicon glyphicon-thumbs-up"></span></p> <p ng-show="last.result !== last.answer">You were wrong! <span class="glyphicon glyphicon-thumbs-down"></span></p> </div> </div> <div class="panel panel-default"> <div class="panel-heading">Stats</div> <div class="panel-body"> <div class="progress no-margin-bottom"> <div class="progress-bar progress-bar-striped progress-bar-success" style="width: {{stats.rightPercent()}}%"></div> <div class="progress-bar progress-bar-striped progress-bar-danger" style="width: {{stats.wrongPercent()}}%"></div> </div> </div> <table class="table centered"> <thead> <tr><th>Right<th>%<th>Wrong<th>%<th>Total  <tbody> <tr><td>{{stats.right}}<td>{{stats.rightPercent() | number:0}}%<td>{{stats.wrong}}<td>{{stats.wrongPercent() | number:0}}%<td>{{stats.total()}}  </table> <div class="panel-body centered"> <p>{{remaining()}} tasks remaining.</p> </div> </div> <!--
+<div class="row marketing">
+  <h4>HTML5 Boilerplate</h4>
+  <p>
+    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  </p>
+
+  <h4>Angular</h4>
+  <p>
+    AngularJS is a toolset for building the framework most suited to your application development.
+  </p>
+
+  <h4>Karma</h4>
+  <p>Spectacular Test Runner for JavaScript.</p>
+</div>
+-->
