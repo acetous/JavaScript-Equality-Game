@@ -26,6 +26,6 @@ angular
         controller: 'IfCtrl'
       })
       .otherwise({
-        redirectTo: '/equals'
+        redirectTo: '/if'
       });
   });
